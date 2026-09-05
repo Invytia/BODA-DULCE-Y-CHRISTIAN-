@@ -18,7 +18,7 @@
            VARIABLES Y ESTILOS BASE - ESTILO EDITORIAL
            ========================================================================== */
         :root {
-            --bg-color: #F2EFE8; /* Marfil un poco más rico para resaltar textura */
+            --bg-color: #F8F6F0; /* Crema luminoso, no oscuro */
             --white: #FFFFFF;
             --main-dark: #1A1A1A; 
             --text-color: #333333;
@@ -38,9 +38,8 @@
             color: var(--text-color);
             font-family: var(--font-body);
             overflow-x: hidden;
-            /* Textura duplicada con mezcla para hacerla mucho más marcada y realista */
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'), url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            background-blend-mode: multiply;
+            /* Textura de papel sin oscurecer (sin blend-mode) */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
 
         /* ==========================================================================
@@ -90,12 +89,11 @@
         }
         .envelope-wrapper:hover { transform: scale(1.05); }
 
-        /* Sobre Blanco */
+        /* Sobre Blanco (Sólido para que no se rompa la animación CSS) */
         .envelope-body {
             position: absolute; inset: 0; background-color: #FFFFFF;
             border-radius: 4px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
             overflow: hidden;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
         .envelope-front {
             position: absolute; inset: 0; z-index: 3;
@@ -109,7 +107,6 @@
             border-top: 130px solid #FFFFFF; transform-origin: top;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 4; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
 
         /* Sello */
@@ -159,10 +156,8 @@
         .column {
             display: flex; flex-direction: column; align-items: center;
             padding: 50px 30px; text-align: center; position: relative; overflow: hidden;
-            background-color: #F2EFE8; box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            /* Textura intensificada en las columnas también */
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'), url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            background-blend-mode: multiply;
+            background-color: #F6F4EE; box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
         .column:not(:last-child) { border-right: 1px solid rgba(197, 160, 89, 0.3); }
 
