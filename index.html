@@ -18,9 +18,9 @@
            VARIABLES Y ESTILOS BASE - ESTILO EDITORIAL
            ========================================================================== */
         :root {
-            --bg-color: #F6F4EE; /* Marfil elegante */
+            --bg-color: #F2EFE8; /* Marfil un poco más rico para resaltar textura */
             --white: #FFFFFF;
-            --main-dark: #1A1A1A; /* Negro suave */
+            --main-dark: #1A1A1A; 
             --text-color: #333333;
             --gold: #C5A059;
             --gold-light: #E8D5A5;
@@ -38,23 +38,41 @@
             color: var(--text-color);
             font-family: var(--font-body);
             overflow-x: hidden;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            /* Textura duplicada con mezcla para hacerla mucho más marcada y realista */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'), url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            background-blend-mode: multiply;
         }
 
         /* ==========================================================================
-           ANIMACIONES SUTILES
+           NUEVO SISTEMA DE ANIMACIONES ESCALONADAS (VIP)
            ========================================================================== */
-        .fade-in {
-            opacity: 0; transform: translateY(35px);
-            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), 
-                        transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+        .anim-el {
+            opacity: 0;
+            will-change: opacity, transform;
         }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        .fade-in-up {
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        .scale-in {
+            transform: scale(0.9);
+            transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
+
+        .fade-in-left {
+            transform: translateX(-40px);
+            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .fade-in-left.visible { opacity: 1; transform: translateX(0); }
 
         @keyframes pulseText { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
         /* ==========================================================================
-           PANTALLA DEL SOBRE ANIMADO (BLANCO SOBRE NEGRO TEXTURIZADO)
+           PANTALLA DEL SOBRE ANIMADO
            ========================================================================== */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
@@ -77,6 +95,7 @@
             position: absolute; inset: 0; background-color: #FFFFFF;
             border-radius: 4px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
             overflow: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
         .envelope-front {
             position: absolute; inset: 0; z-index: 3;
@@ -90,6 +109,7 @@
             border-top: 130px solid #FFFFFF; transform-origin: top;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 4; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
 
         /* Sello */
@@ -139,8 +159,10 @@
         .column {
             display: flex; flex-direction: column; align-items: center;
             padding: 50px 30px; text-align: center; position: relative; overflow: hidden;
-            background: var(--bg-color); box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            background-color: #F2EFE8; box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            /* Textura intensificada en las columnas también */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'), url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            background-blend-mode: multiply;
         }
         .column:not(:last-child) { border-right: 1px solid rgba(197, 160, 89, 0.3); }
 
@@ -162,7 +184,7 @@
         /* ==========================================================================
            BLOQUES ESPECÍFICOS
            ========================================================================== */
-        /* Hero: Nombres Perfectamente Ajustados */
+        /* Hero */
         .intro-text { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; color: var(--main-dark); font-weight: 500;}
         
         .names-container { display: flex; flex-direction: column; align-items: center; line-height: 1; margin: 5px 0 15px 0; }
@@ -177,7 +199,15 @@
 
         /* Calendario */
         .save-date-title { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 3px; margin-top: 30px; margin-bottom: 5px; color: var(--main-dark); }
-        .save-date-date { font-family: var(--font-title); font-size: 3.5rem; color: var(--main-dark); margin-bottom: 5px; }
+        
+        /* FECHA EN UN SOLO RENGLÓN (Responsive Dynamic Font) */
+        .save-date-date { 
+            font-family: var(--font-title); 
+            font-size: clamp(2.5rem, 6vw, 3.5rem); 
+            color: var(--main-dark); 
+            margin-bottom: 5px; 
+            white-space: nowrap; 
+        }
         
         .calendar-wrapper { width: 100%; max-width: 320px; margin: 25px auto; font-family: var(--font-sans); font-size: 0.85rem; }
         .calendar-month { text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 500; color: var(--main-dark); }
@@ -186,10 +216,8 @@
         .calendar-day { padding: 8px 0; }
         .calendar-day.highlight { background: var(--main-dark); color: var(--white); border-radius: 50%; font-weight: bold; border: 1px solid var(--main-dark);}
 
-        /* Contador Editorial (Limpio y Fino) */
-        .timer-block {
-            width: 100%; margin: 30px 0; padding: 25px 0; border-top: 1px solid rgba(197, 160, 89, 0.4); border-bottom: 1px solid rgba(197, 160, 89, 0.4);
-        }
+        /* Contador Editorial */
+        .timer-block { width: 100%; margin: 30px 0; padding: 25px 0; border-top: 1px solid rgba(197, 160, 89, 0.4); border-bottom: 1px solid rgba(197, 160, 89, 0.4); }
         #countdown-timer { display: flex; justify-content: space-evenly; gap: 10px; font-family: var(--font-sans); }
         #countdown-timer span { display: flex; flex-direction: column; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-color); align-items: center;}
         #countdown-timer b { font-size: 1.8rem; color: var(--main-dark); font-weight: 400; font-family: var(--font-title); line-height: 1; margin-bottom: 5px;}
@@ -302,8 +330,8 @@
            FOOTER FIRMA INVYTIA
            ========================================================================== */
         .footer-editorial {
-            width: 100%; background: var(--bg-color); text-align: center; padding: 40px 20px;
-            border-top: 1px solid rgba(197, 160, 89, 0.3);
+            width: 100%; background: transparent; text-align: center; padding: 40px 20px;
+            border-top: 1px solid rgba(197, 160, 89, 0.3); margin-top: 40px;
         }
         .footer-editorial p { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 5px; color: var(--main-dark); text-transform: uppercase; margin: 0; font-weight: 500;}
 
@@ -344,17 +372,17 @@
             
             <!-- ================= COLUMNA 1: HERO, PADRES Y FECHA ================= -->
             <div class="column">
-                <p class="intro-text fade-in">Nuestra Boda</p>
+                <p class="intro-text anim-el fade-in-up">Nuestra Boda</p>
                 
-                <div class="names-container fade-in">
+                <div class="names-container anim-el scale-in" style="transition-delay: 0.2s;">
                     <span class="name">DULCE</span>
                     <span class="ampersand">y</span>
                     <span class="name">CHRISTIAN</span>
                 </div>
                 
-                <div class="divider fade-in"><i class="fa-solid fa-rings-wedding" style="font-size: 0.9rem;"></i></div>
+                <div class="divider anim-el fade-in-up" style="transition-delay: 0.3s;"><i class="fa-solid fa-rings-wedding" style="font-size: 0.9rem;"></i></div>
                 
-                <div class="parents-section fade-in">
+                <div class="parents-section anim-el fade-in-up" style="transition-delay: 0.4s;">
                     <p style="font-family: var(--font-script); font-size: 2.2rem; color: var(--gold); margin-bottom: 25px;">Con la bendición de nuestros padres</p>
                     
                     <div class="parents-group">
@@ -371,15 +399,15 @@
                     </div>
                 </div>
 
-                <div class="divider fade-in"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+                <div class="divider anim-el fade-in-up"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
                 
-                <div class="save-date fade-in">
+                <div class="save-date anim-el fade-in-up" style="transition-delay: 0.1s;">
                     <p class="save-date-title">RESERVA LA FECHA</p>
                     <div class="save-date-date">06 &bull; 11 &bull; 2026</div>
                     <p class="intro-text">VIERNES</p>
                 </div>
 
-                <div class="calendar-wrapper fade-in">
+                <div class="calendar-wrapper anim-el fade-in-up" style="transition-delay: 0.2s;">
                     <div class="calendar-month">Noviembre 2026</div>
                     <div class="calendar-grid calendar-header">
                         <div>DOM</div><div>LUN</div><div>MAR</div><div>MIE</div><div>JUE</div><div>VIE</div><div>SAB</div>
@@ -394,7 +422,7 @@
                 </div>
 
                 <!-- CONTADOR EDITORIAL -->
-                <div class="timer-block fade-in">
+                <div class="timer-block anim-el fade-in-up" style="transition-delay: 0.3s;">
                     <p style="font-family: var(--font-script); font-size: 1.8rem; text-align: center; margin-bottom: 15px; color: var(--gold);">Faltan</p>
                     <div id="countdown-timer">
                         <span><b id="dias">00</b> DÍAS</span>
@@ -404,15 +432,15 @@
                     </div>
                 </div>
 
-                <button onclick="downloadICS()" class="btn fade-in" style="width: 100%;"><i class="fa-regular fa-calendar-plus"></i> AGREGAR AL CALENDARIO</button>
+                <button onclick="downloadICS()" class="btn anim-el fade-in-up" style="width: 100%; transition-delay: 0.4s;"><i class="fa-regular fa-calendar-plus"></i> AGREGAR AL CALENDARIO</button>
             </div>
 
             <!-- ================= COLUMNA 2: UBICACIONES, PROGRAMA Y HOSPEDAJE ================= -->
             <div class="column">
-                <h2 class="fade-in" style="font-size: 2.2rem; margin-bottom: 5px;">RECEPCIÓN</h2>
-                <div class="divider fade-in"><i class="fa-solid fa-map-location-dot" style="font-size: 0.9rem;"></i></div>
+                <h2 class="anim-el fade-in-up" style="font-size: 2.2rem; margin-bottom: 5px;">RECEPCIÓN</h2>
+                <div class="divider anim-el fade-in-up"><i class="fa-solid fa-map-location-dot" style="font-size: 0.9rem;"></i></div>
                 
-                <div class="venue-card fade-in">
+                <div class="venue-card anim-el fade-in-up" style="transition-delay: 0.1s;">
                     <i class="fa-solid fa-church venue-icon"></i>
                     <p class="venue-type">CEREMONIA RELIGIOSA</p>
                     <h3 class="venue-name">Templo Ntra. Sra. del Refugio</h3>
@@ -423,7 +451,7 @@
                     <a href="https://maps.app.goo.gl/yh83mXaAN4Q5cVzK8" target="_blank" class="btn" style="width: 100%;"><i class="fa-solid fa-location-dot"></i> UBICACIÓN EXACTA</a>
                 </div>
 
-                <div class="venue-card fade-in">
+                <div class="venue-card anim-el fade-in-up" style="transition-delay: 0.2s;">
                     <i class="fa-solid fa-champagne-glasses venue-icon"></i>
                     <p class="venue-type">CELEBRACIÓN</p>
                     <h3 class="venue-name">La Cantera Eventos</h3>
@@ -434,47 +462,47 @@
                     <a href="https://maps.app.goo.gl/kN8ARmiPuG8UEV5Z6" target="_blank" class="btn" style="width: 100%;"><i class="fa-solid fa-location-dot"></i> UBICACIÓN EXACTA</a>
                 </div>
 
-                <h2 class="fade-in" style="font-size: 2rem; margin-top: 30px;">ITINERARIO</h2>
-                <div class="divider fade-in"><i class="fa-regular fa-clock" style="font-size: 0.9rem;"></i></div>
+                <h2 class="anim-el fade-in-up" style="font-size: 2rem; margin-top: 30px;">ITINERARIO</h2>
+                <div class="divider anim-el fade-in-up"><i class="fa-regular fa-clock" style="font-size: 0.9rem;"></i></div>
 
-                <div class="timeline-section fade-in">
-                    <div class="timeline-item">
+                <div class="timeline-section">
+                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.1s;">
                         <div class="timeline-icon"><i class="fa-solid fa-church"></i></div>
                         <div class="timeline-content"><div class="timeline-time">19:00 HRS</div><div class="timeline-event">Ceremonia Religiosa</div></div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.2s;">
                         <div class="timeline-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
                         <div class="timeline-content"><div class="timeline-time">21:00 HRS</div><div class="timeline-event">Recepción y Cóctel</div></div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.3s;">
                         <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
                         <div class="timeline-content"><div class="timeline-time">22:00 HRS</div><div class="timeline-event">Banquete Especial</div></div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.4s;">
                         <div class="timeline-icon"><i class="fa-solid fa-music"></i></div>
                         <div class="timeline-content"><div class="timeline-time">23:30 HRS</div><div class="timeline-event">Música y Celebración</div></div>
                     </div>
                 </div>
 
-                <h2 class="fade-in" style="font-size: 2rem; margin-top: 20px;">HOSPEDAJE</h2>
-                <div class="divider fade-in"><i class="fa-solid fa-bed" style="font-size: 0.9rem;"></i></div>
-                <p class="fade-in" style="font-size: 0.9rem; margin-bottom: 25px;">Para tu comodidad, sugerimos las siguientes opciones:</p>
+                <h2 class="anim-el fade-in-up" style="font-size: 2rem; margin-top: 20px;">HOSPEDAJE</h2>
+                <div class="divider anim-el fade-in-up"><i class="fa-solid fa-bed" style="font-size: 0.9rem;"></i></div>
+                <p class="anim-el fade-in-up" style="font-size: 0.9rem; margin-bottom: 25px;">Para tu comodidad, sugerimos las siguientes opciones:</p>
 
-                <div class="hotel-card fade-in">
+                <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.1s;">
                     <div class="hotel-img-wrapper"><img src="assets/hotel1.jpg" alt="Hotel Express" class="hotel-img"></div>
                     <div class="hotel-content">
                         <h4>Hotel Guadalajara Express</h4>
                         <a href="https://hotelguadalajaraexpress.com/" target="_blank" class="btn hotel-btn">VISITAR SITIO WEB</a>
                     </div>
                 </div>
-                <div class="hotel-card fade-in">
+                <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.2s;">
                     <div class="hotel-img-wrapper"><img src="assets/hotel2.jpg" alt="Hotel JVD" class="hotel-img"></div>
                     <div class="hotel-content">
                         <h4>Hotel JVD Inn <br><span style="font-family:var(--font-sans); font-size:0.8rem; font-weight:400; color:var(--text-color);">Tonalá Centro</span></h4>
                         <a href="https://www.hoteljvdinn.com/about" target="_blank" class="btn hotel-btn">VISITAR SITIO WEB</a>
                     </div>
                 </div>
-                <div class="hotel-card fade-in">
+                <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.3s;">
                     <div class="hotel-img-wrapper"><img src="assets/hotel3.jpg" alt="Hotel Posada" class="hotel-img"></div>
                     <div class="hotel-content">
                         <h4>Hotel Posada Virreyes</h4>
@@ -487,24 +515,24 @@
             <div class="column">
                 
                 <!-- DRESS CODE SATINADO (Contraste Elegante) -->
-                <div class="satin-black fade-in">
+                <div class="satin-black anim-el scale-in">
                     <p class="dress-code-title">CÓDIGO DE VESTIMENTA</p>
                     <h2 class="dress-code-main">Total Black<br>Attire</h2>
                     <p style="font-family: var(--font-sans); letter-spacing: 3px; font-size: 0.85rem; margin-bottom: 20px; color: var(--gold-light);">FORMAL / ETIQUETA</p>
                     <p style="font-size: 0.95rem; font-style: italic; opacity: 0.9; line-height: 1.6;">Nos encantará verlos lucir espectaculares vistiendo exclusivamente de negro para esta gran noche.</p>
                     
                     <div class="inspo-grid">
-                        <img src="assets/dress1.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress2.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress3.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress4.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress5.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress6.jpg" class="inspo-img" alt="Inspo">
+                        <img src="assets/dress1.jpg" class="inspo-img anim-el fade-in-up" style="transition-delay: 0.1s;" alt="Inspo">
+                        <img src="assets/dress2.jpg" class="inspo-img anim-el fade-in-up" style="transition-delay: 0.2s;" alt="Inspo">
+                        <img src="assets/dress3.jpg" class="inspo-img anim-el fade-in-up" style="transition-delay: 0.3s;" alt="Inspo">
+                        <img src="assets/dress4.jpg" class="inspo-img anim-el fade-in-up" style="transition-delay: 0.4s;" alt="Inspo">
+                        <img src="assets/dress5.jpg" class="inspo-img anim-el fade-in-up" style="transition-delay: 0.5s;" alt="Inspo">
+                        <img src="assets/dress6.jpg" class="inspo-img anim-el fade-in-up" style="transition-delay: 0.6s;" alt="Inspo">
                     </div>
                 </div>
 
                 <!-- No Niños -->
-                <div class="no-kids-block fade-in">
+                <div class="no-kids-block anim-el fade-in-up">
                     <p style="font-size: 1rem; font-style: italic; line-height: 1.6; margin:0; text-align: center;">
                         <i class="fa-solid fa-children" style="color: var(--gold); font-size: 1.5rem; display: block; margin-bottom: 12px;"></i>
                         Para que todos podamos disfrutar de una velada inolvidable, hemos decidido que nuestra boda sea un evento <b>exclusivamente para adultos</b>. Agradecemos profundamente su comprensión.
@@ -512,11 +540,11 @@
                 </div>
 
                 <!-- Mesa de Regalos -->
-                <h2 class="fade-in" style="font-size: 2rem; margin-top: 20px;">MESA DE REGALOS</h2>
-                <div class="divider fade-in"><i class="fa-solid fa-gift" style="font-size: 0.9rem;"></i></div>
-                <p class="fade-in" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">El mejor regalo es su presencia, pero si desean tener un detalle adicional con nosotros:</p>
+                <h2 class="anim-el fade-in-up" style="font-size: 2rem; margin-top: 20px;">MESA DE REGALOS</h2>
+                <div class="divider anim-el fade-in-up"><i class="fa-solid fa-gift" style="font-size: 0.9rem;"></i></div>
+                <p class="anim-el fade-in-up" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">El mejor regalo es su presencia, pero si desean tener un detalle adicional con nosotros:</p>
                 
-                <div class="fade-in" style="display: flex; flex-direction: column; gap: 15px; width: 100%; align-items: center;">
+                <div class="anim-el fade-in-up" style="display: flex; flex-direction: column; gap: 15px; width: 100%; align-items: center; transition-delay: 0.1s;">
                     <a href="https://www.amazon.com.mx/wedding/guest-view/1CSXY9VLGT7SX" target="_blank" class="btn" style="width: 100%; background: #232F3E; color: white; border: none; padding: 18px;">
                         <i class="fa-brands fa-amazon" style="font-size: 1.2rem;"></i> Mesa en Amazon
                     </a>
@@ -526,14 +554,14 @@
                 </div>
 
                 <!-- Galería -->
-                <h2 class="fade-in" style="font-size: 2rem; margin-top: 50px;">GALERÍA EN VIVO</h2>
-                <div class="divider fade-in"><i class="fa-solid fa-camera-retro" style="font-size: 0.9rem;"></i></div>
-                <p class="fade-in" style="font-size: 0.95rem; line-height: 1.6;">¡Queremos ver la boda a través de tus ojos! Escanea para compartir tus fotos y videos.</p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://drive.google.com/drive/folders/1hAgKBESShE3-pZE4mszkHkgYQO_ClZzl?usp=sharing" alt="QR Galería" class="qr-code fade-in">
-                <a href="https://drive.google.com/drive/folders/1hAgKBESShE3-pZE4mszkHkgYQO_ClZzl?usp=sharing" target="_blank" class="btn fade-in" style="width: 100%;"><i class="fa-brands fa-google-drive"></i> SUBIR MIS FOTOS</a>
+                <h2 class="anim-el fade-in-up" style="font-size: 2rem; margin-top: 50px;">GALERÍA EN VIVO</h2>
+                <div class="divider anim-el fade-in-up"><i class="fa-solid fa-camera-retro" style="font-size: 0.9rem;"></i></div>
+                <p class="anim-el fade-in-up" style="font-size: 0.95rem; line-height: 1.6;">¡Queremos ver la boda a través de tus ojos! Escanea para compartir tus fotos y videos.</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://drive.google.com/drive/folders/1hAgKBESShE3-pZE4mszkHkgYQO_ClZzl?usp=sharing" alt="QR Galería" class="qr-code anim-el scale-in" style="transition-delay: 0.2s;">
+                <a href="https://drive.google.com/drive/folders/1hAgKBESShE3-pZE4mszkHkgYQO_ClZzl?usp=sharing" target="_blank" class="btn anim-el fade-in-up" style="width: 100%;"><i class="fa-brands fa-google-drive"></i> SUBIR MIS FOTOS</a>
 
                 <!-- RSVP EDITORIAL FORM -->
-                <div class="editorial-form-box fade-in" style="margin-top: 50px;">
+                <div class="editorial-form-box anim-el fade-in-up" style="margin-top: 50px;">
                     <h2 class="rsvp-header">R.S.V.P.</h2>
                     <p class="rsvp-subtitle">Confirmación de Asistencia</p>
                     
@@ -576,7 +604,7 @@
                 </div>
 
                 <!-- BUENOS DESEOS EDITORIAL FORM -->
-                <div class="editorial-form-box fade-in" style="margin-top: 30px;">
+                <div class="editorial-form-box anim-el fade-in-up" style="margin-top: 30px;">
                     <p style="font-family: var(--font-script); font-size: 2.5rem; color: var(--gold); margin-bottom: 10px; text-align: center;">Buenos Deseos</p>
                     <p style="font-size: 0.9rem; text-align: center; margin-bottom: 25px; color: var(--text-color);">Nos encantaría atesorar tus palabras. Déjanos un mensaje para recordar este día por siempre.</p>
                     
@@ -652,15 +680,17 @@
         // --- 3. INICIALIZACIÓN Y LÓGICA INVYTIA ---
         document.addEventListener("DOMContentLoaded", function() {
             
-            // Observer Animaciones
+            // Observer Animaciones Escalonadas VIP
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        // Dejamos de observar una vez que ya apareció para que no se repita
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.anim-el').forEach(el => observer.observe(el));
 
             // URL Params (Soporta ?pases= o ?p= de Invytia)
             const urlParams = new URLSearchParams(window.location.search);
@@ -698,7 +728,7 @@
                 document.getElementById('genericRSVPInputs').style.display = 'none';
             }
 
-            // Countdown hasta 6 Nov 2026 19:00 hrs
+            // Countdown hasta 6 Nov 2026 19:00 hrs (CON SEGUNDOS)
             const countDownDate = new Date("Nov 6, 2026 19:00:00").getTime();
             const x = setInterval(function() {
                 const now = new Date().getTime();
