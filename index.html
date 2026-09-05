@@ -163,9 +163,9 @@
         /* ==========================================================================
            BLOQUES ESPECÍFICOS
            ========================================================================== */
-        /* Nombres y Padres */
-        .intro-text { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; }
-        .names-title { font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--main-dark); }
+        /* Nombres (HERO) y Padres */
+        .intro-text { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; color: var(--gold); font-weight: 600;}
+        .names-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 5px; color: var(--main-dark); margin-top: 10px; }
         .names-title span { font-family: var(--font-script); font-size: 2.8rem; display: block; margin: -5px 0; color: var(--gold); }
         
         .parents-section { margin: 25px 0; width: 100%; }
@@ -185,13 +185,13 @@
         .calendar-day.highlight { background-color: var(--main-dark); color: var(--gold); border-radius: 50%; font-weight: bold; border: 1px solid var(--gold); }
 
         #countdown-timer {
-            font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 2px;
+            font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px;
             color: var(--main-dark); font-weight: 600;
             margin: 30px 0; padding: 20px 0; width: 100%;
             border-top: 1px solid rgba(197, 160, 89, 0.3); border-bottom: 1px solid rgba(197, 160, 89, 0.3);
-            display: flex; justify-content: center; gap: 20px;
+            display: flex; justify-content: space-evenly; gap: 10px;
         }
-        #countdown-timer span { display: flex; flex-direction: column; font-size: 0.75rem; color: var(--gold); }
+        #countdown-timer span { display: flex; flex-direction: column; font-size: 0.70rem; color: var(--gold); }
         #countdown-timer b { font-size: 1.8rem; color: var(--main-dark); font-weight: 400; font-family: var(--font-title); line-height: 1; }
 
         /* Mapas y Ubicaciones */
@@ -221,51 +221,75 @@
         .timeline-time { font-family: var(--font-sans); font-weight: 600; font-size: 1rem; color: var(--gold); }
         .timeline-event { font-family: var(--font-body); font-size: 1.1rem; color: var(--main-dark); margin-top: 2px; font-weight: 500; }
 
-        /* Hoteles Sugeridos */
-        .hotel-list { width: 100%; text-align: left; margin-top: 15px; }
-        .hotel-item { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
-        .hotel-item:last-child { border-bottom: none; }
-        .hotel-info h4 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; color: var(--main-dark); }
-        .hotel-link { color: var(--gold); font-size: 1.2rem; transition: transform 0.3s; }
-        .hotel-link:hover { transform: scale(1.1); color: var(--main-dark); }
-
-        /* Código de Vestimenta Black Block */
-        .dark-block {
-            background-color: var(--main-dark); color: var(--cream); width: 100%;
-            padding: 40px 25px; border-radius: 8px; position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid var(--gold); margin-bottom: 30px;
+        /* Hoteles Sugeridos (Rediseñados y más llamativos) */
+        .hotel-card {
+            width: 100%; background: var(--white);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 8px; overflow: hidden;
+            margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
         }
-        .dark-block h2, .dark-block h3, .dark-block p { color: var(--cream); }
+        .hotel-card:hover { transform: translateY(-5px); }
+        .hotel-img {
+            width: 100%; height: 200px; object-fit: cover;
+            border-bottom: 2px solid var(--gold);
+        }
+        .hotel-content { padding: 20px; }
+        .hotel-content h4 { font-family: var(--font-title); font-size: 1.5rem; color: var(--main-dark); margin-bottom: 10px; }
+
+        /* Código de Vestimenta - FONDO SATINADO NEGRO */
+        .satin-black {
+            /* Degradado avanzado que simula dobleces y brillo de satín */
+            background: linear-gradient(135deg, #111111 0%, #2b2b2b 25%, #050505 50%, #222222 75%, #000000 100%);
+            color: var(--cream); width: 100%;
+            padding: 40px 25px; border-radius: 8px; position: relative;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 10px 30px rgba(0,0,0,0.3); 
+            border: 1px solid #444; margin-bottom: 30px;
+        }
+        .satin-black h2, .satin-black p { color: var(--cream); }
         .dress-code-title { font-family: var(--font-sans); font-size: 0.95rem; letter-spacing: 3px; margin-bottom: 15px; color: var(--gold) !important; font-weight: 600;}
-        .dress-code-main { font-family: var(--font-title); font-size: 2.2rem; margin-bottom: 10px; line-height: 1.2;}
+        .dress-code-main { font-family: var(--font-title); font-size: 2.5rem; margin-bottom: 10px; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
         
         .inspo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 25px; }
-        .inspo-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; border: 1px solid rgba(197, 160, 89, 0.5); }
+        .inspo-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; border: 1px solid rgba(197, 160, 89, 0.7); box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
 
         /* Restricción Niños */
         .no-kids-block {
             background-color: transparent; color: var(--main-dark); padding: 25px;
-            border-radius: 8px; width: 100%; border: 1px solid var(--main-dark); margin-bottom: 30px;
+            border-radius: 8px; width: 100%; border: 1px solid var(--gold); margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         /* Galería */
         .qr-code { width: 140px; height: 140px; margin: 20px 0; border: 2px solid var(--gold); padding: 5px; border-radius: 8px; background: #fff;}
 
-        /* Formularios RSVP */
-        .glass-panel {
-            width: 100%; padding: 30px 20px; background: rgba(255, 255, 255, 0.6); 
-            border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 8px; margin-bottom: 30px;
+        /* FORMULARIOS ELEGANTES (RSVP y Deseos) */
+        .elegant-form-box {
+            width: 100%; padding: 35px 25px; background: var(--white); 
+            border: 1px solid var(--gold); border-radius: 4px; margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06); position: relative;
         }
-        .form-group { margin-bottom: 20px; text-align: left; width: 100%; }
+        /* Doble borde interno para mayor elegancia */
+        .elegant-form-box::before {
+            content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid rgba(197, 160, 89, 0.3); pointer-events: none; border-radius: 2px;
+        }
+        
+        .form-group { margin-bottom: 20px; text-align: left; width: 100%; position: relative; z-index: 1;}
         .form-group label { display: block; font-family: var(--font-sans); font-size: 0.85rem; color: var(--main-dark); margin-bottom: 8px; letter-spacing: 1px; font-weight: 600;}
         .form-group input[type="text"], .form-group select, .form-group textarea {
-            width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(197, 160, 89, 0.6);
-            border-radius: 4px; font-family: var(--font-body); font-size: 0.95rem; color: var(--text-color); outline: none; transition: all 0.3s;
+            width: 100%; padding: 12px; background: var(--bg-color); border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 0px; font-family: var(--font-body); font-size: 0.95rem; color: var(--text-color); outline: none; transition: all 0.3s;
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--main-dark); box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
         .radio-container { display: flex; gap: 15px; }
         .radio-label { display: flex; align-items: center; gap: 5px; cursor: pointer; font-size: 0.95rem; }
-        .deadline-text { font-family: var(--font-sans); font-size: 0.8rem; color: #D32F2F; font-weight: 600; text-align: center; margin-top: 15px; letter-spacing: 1px;}
+        
+        .deadline-text { 
+            font-family: var(--font-sans); font-size: 0.8rem; color: var(--main-dark); 
+            font-weight: 600; text-align: center; margin-top: 20px; letter-spacing: 2px;
+            border-top: 1px solid rgba(197, 160, 89, 0.3); padding-top: 15px;
+        }
 
         @media (max-width: 992px) {
             .invitation-container { grid-template-columns: 1fr; }
@@ -303,11 +327,15 @@
             
             <!-- ================= COLUMNA 1: INTRODUCCIÓN Y PADRES ================= -->
             <div class="column">
+                
+                <!-- HERO: NOMBRES HASTA ARRIBA -->
                 <p class="intro-text fade-in">Nuestra Boda</p>
+                <h1 class="names-title fade-in">DULCE<br><span>y</span><br>CHRISTIAN</h1>
                 <div class="divider fade-in"><i class="fa-solid fa-rings-wedding" style="font-size: 0.9rem;"></i></div>
                 
+                <!-- PADRES Y PADRINOS -->
                 <div class="parents-section fade-in">
-                    <p style="font-family: var(--font-script); font-size: 2.2rem; color: var(--gold); margin-bottom: 15px;">Con la bendición de nuestros padres</p>
+                    <p style="font-family: var(--font-script); font-size: 2.2rem; color: var(--gold); margin-bottom: 25px; margin-top: 10px;">Con la bendición de nuestros padres</p>
                     
                     <div class="parents-group">
                         <h4>Padres de la Novia</h4>
@@ -325,8 +353,7 @@
 
                 <div class="divider fade-in"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
                 
-                <p class="intro-text fade-in" style="margin-top: 15px;">Tenemos el honor de invitarte al enlace matrimonial de</p>
-                <h1 class="names-title fade-in">DULCE<span>y</span>CHRISTIAN</h1>
+                <p class="intro-text fade-in" style="margin-top: 15px; font-size: 0.75rem;">Tenemos el honor de invitarte a nuestro enlace matrimonial</p>
                 
                 <div class="save-date fade-in">
                     <p class="save-date-title">RESERVA LA FECHA</p>
@@ -348,16 +375,18 @@
                     </div>
                 </div>
 
+                <!-- CONTADOR CON SEGUNDOS -->
                 <div id="countdown-timer" class="fade-in">
                     <span><b id="dias">00</b> DÍAS</span>
                     <span><b id="horas">00</b> HRS</span>
                     <span><b id="minutos">00</b> MIN</span>
+                    <span><b id="segundos">00</b> SEG</span>
                 </div>
 
                 <button onclick="downloadICS()" class="btn fade-in" style="width: 100%;"><i class="fa-regular fa-calendar-plus"></i> AGREGAR AL CALENDARIO</button>
             </div>
 
-            <!-- ================= COLUMNA 2: UBICACIONES Y PROGRAMA ================= -->
+            <!-- ================= COLUMNA 2: UBICACIONES, PROGRAMA Y HOSPEDAJE ================= -->
             <div class="column">
                 <h2 class="fade-in" style="font-size: 2.2rem; margin-bottom: 5px;">DÓNDE Y CUÁNDO</h2>
                 <div class="divider fade-in"><i class="fa-solid fa-map-location-dot" style="font-size: 0.9rem;"></i></div>
@@ -408,46 +437,55 @@
                     </div>
                 </div>
 
-                <!-- Hospedaje -->
-                <div class="venue-card fade-in" style="background: transparent; border: 1px solid var(--gold); box-shadow: none;">
-                    <i class="fa-solid fa-bed venue-icon"></i>
-                    <h3 class="venue-name" style="font-size: 1.5rem;">Hospedaje Sugerido</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 10px;">Para su comodidad, recomendamos los siguientes hoteles cercanos:</p>
-                    <div class="hotel-list">
-                        <div class="hotel-item">
-                            <div class="hotel-info"><h4>Hotel Guadalajara Express</h4></div>
-                            <a href="https://hotelguadalajaraexpress.com/" target="_blank" class="hotel-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                        <div class="hotel-item">
-                            <div class="hotel-info"><h4>Hotel JVD Inn - Tonalá Centro</h4></div>
-                            <a href="https://www.hoteljvdinn.com/about" target="_blank" class="hotel-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                        <div class="hotel-item">
-                            <div class="hotel-info"><h4>Hotel Posada Virreyes</h4></div>
-                            <a href="https://hotelposadavirreyes.com/" target="_blank" class="hotel-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
+                <!-- HOSPEDAJE LLAMATIVO -->
+                <h2 class="fade-in" style="font-size: 2rem; margin-top: 30px;">HOSPEDAJE</h2>
+                <div class="divider fade-in"><i class="fa-solid fa-bed" style="font-size: 0.9rem;"></i></div>
+                <p class="fade-in" style="font-size: 0.95rem; margin-bottom: 20px;">Para tu comodidad, te sugerimos las siguientes opciones de alojamiento:</p>
+
+                <div class="hotel-card fade-in">
+                    <img src="assets/hotel1.jpg" alt="Hotel Guadalajara Express" class="hotel-img">
+                    <div class="hotel-content">
+                        <h4>Hotel Guadalajara Express</h4>
+                        <a href="https://hotelguadalajaraexpress.com/" target="_blank" class="btn" style="width: 100%; margin-top: 5px;"><i class="fa-solid fa-link"></i> IR AL SITIO</a>
                     </div>
                 </div>
+
+                <div class="hotel-card fade-in">
+                    <img src="assets/hotel2.jpg" alt="Hotel JVD Inn" class="hotel-img">
+                    <div class="hotel-content">
+                        <h4>Hotel JVD Inn <br><small style="font-family:var(--font-sans); font-size:0.8rem; font-weight:400;">Tonalá Centro</small></h4>
+                        <a href="https://www.hoteljvdinn.com/about" target="_blank" class="btn" style="width: 100%; margin-top: 5px;"><i class="fa-solid fa-link"></i> IR AL SITIO</a>
+                    </div>
+                </div>
+
+                <div class="hotel-card fade-in">
+                    <img src="assets/hotel3.jpg" alt="Hotel Posada Virreyes" class="hotel-img">
+                    <div class="hotel-content">
+                        <h4>Hotel Posada Virreyes</h4>
+                        <a href="https://hotelposadavirreyes.com/" target="_blank" class="btn" style="width: 100%; margin-top: 5px;"><i class="fa-solid fa-link"></i> IR AL SITIO</a>
+                    </div>
+                </div>
+
             </div>
 
             <!-- ================= COLUMNA 3: DRESS CODE, REGALOS Y RSVP ================= -->
             <div class="column">
                 
-                <!-- Dress Code -->
-                <div class="dark-block fade-in">
+                <!-- DRESS CODE: TEXTURA SATINADA -->
+                <div class="satin-black fade-in">
                     <p class="dress-code-title">CÓDIGO DE VESTIMENTA</p>
                     <h2 class="dress-code-main">Total Black<br>Attire</h2>
-                    <p style="font-family: var(--font-sans); letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 20px;">FORMAL</p>
+                    <p style="font-family: var(--font-sans); letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 20px; color: var(--gold);">FORMAL</p>
                     
-                    <p style="font-size: 0.9rem; font-style: italic; opacity: 0.9;">Nos encantará verlos lucir espectaculares y elegantes de negro.</p>
+                    <p style="font-size: 0.95rem; font-style: italic; opacity: 0.9; line-height: 1.5;">Nos encantará verlos lucir espectaculares y muy elegantes vistiendo exclusivamente de negro.</p>
                     
                     <div class="inspo-grid">
-                        <img src="assets/dress1.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress2.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress3.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress4.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress5.jpg" class="inspo-img" alt="Inspo">
-                        <img src="assets/dress6.jpg" class="inspo-img" alt="Inspo">
+                        <img src="assets/dress1.jpg" class="inspo-img" alt="Outfit Inspo 1">
+                        <img src="assets/dress2.jpg" class="inspo-img" alt="Outfit Inspo 2">
+                        <img src="assets/dress3.jpg" class="inspo-img" alt="Outfit Inspo 3">
+                        <img src="assets/dress4.jpg" class="inspo-img" alt="Outfit Inspo 4">
+                        <img src="assets/dress5.jpg" class="inspo-img" alt="Outfit Inspo 5">
+                        <img src="assets/dress6.jpg" class="inspo-img" alt="Outfit Inspo 6">
                     </div>
                 </div>
 
@@ -485,14 +523,14 @@
                     <a href="https://drive.google.com/drive/folders/1hAgKBESShE3-pZE4mszkHkgYQO_ClZzl?usp=sharing" target="_blank" class="btn" style="font-size: 0.8rem; padding: 10px 20px;"><i class="fa-brands fa-google-drive"></i> SUBIR FOTOS AQUÍ</a>
                 </div>
 
-                <!-- RSVP (Pases y Confirmación) -->
+                <!-- RSVP (Pases y Confirmación ELEGANTES) -->
                 <div class="fade-in" style="width: 100%; margin-top: 30px;">
                     <h2 style="font-size: 2rem;">CONFIRMACIÓN</h2>
                     <div class="divider"><i class="fa-solid fa-envelope-open-text" style="font-size: 0.9rem;"></i></div>
                     
-                    <div class="glass-panel">
+                    <div class="elegant-form-box">
                         <!-- PASE DINÁMICO INVYTIA -->
-                        <div id="paseSection" style="display: none; text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 20px;">
+                        <div id="paseSection" style="display: none; text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 20px; position: relative; z-index: 1;">
                             <p style="font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 5px; font-weight: 600;">PASE DE ENTRADA</p>
                             <h2 id="guestNameDisplay" style="font-size: 2rem; margin: 5px 0; color: var(--main-dark);">Invitado Especial</h2>
                             <p style="font-size: 1.15rem; font-family: var(--font-body); color: var(--text-color);">Lugares reservados: <span id="guestPassesDisplay" style="font-weight: bold; color: var(--gold); font-size: 1.4rem;">2</span></p>
@@ -511,14 +549,14 @@
                                 </div>
                             </div>
 
-                            <div id="dynamicGuestList" style="width: 100%; text-align: left;"></div>
+                            <div id="dynamicGuestList" style="width: 100%; text-align: left; position: relative; z-index: 1;"></div>
 
                             <div class="form-group" style="margin-top: 25px;">
                                 <label>Restricciones Alimenticias / Alergias:</label>
                                 <textarea id="rsvpAlergias" rows="2" placeholder="Vegetariano, alergia a nueces, etc. (Opcional)"></textarea>
                             </div>
                             
-                            <button type="button" onclick="sendRSVP()" class="btn" style="width: 100%; background-color: #25D366; color: white; border: none; font-size: 1rem; font-weight: bold; padding: 15px; border-radius: 4px;">
+                            <button type="button" onclick="sendRSVP()" class="btn" style="width: 100%; background-color: #25D366; color: white; border: none; font-size: 1rem; font-weight: bold; padding: 15px; border-radius: 4px; position: relative; z-index: 1;">
                                 <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> CONFIRMAR POR WHATSAPP
                             </button>
 
@@ -527,18 +565,20 @@
                     </div>
                 </div>
 
-                <!-- Buenos Deseos -->
+                <!-- BUENOS DESEOS VIP -->
                 <div class="fade-in" style="width: 100%; margin-top: 20px;">
-                    <h2 style="font-size: 2rem;">BUENOS DESEOS</h2>
+                    <h2 style="font-size: 2rem;">LIBRO DE FIRMAS</h2>
                     <div class="divider"><i class="fa-solid fa-pen-fancy" style="font-size: 0.9rem;"></i></div>
                     
-                    <div class="glass-panel" style="margin-top: 10px;">
+                    <div class="elegant-form-box">
                         <form id="wishesForm">
+                            <p style="font-family: var(--font-script); font-size: 1.8rem; color: var(--gold); margin-bottom: 15px; text-align: center; position: relative; z-index: 1;">Déjanos tus palabras</p>
+                            <p style="font-size: 0.9rem; text-align: center; margin-bottom: 20px; color: var(--text-color); position: relative; z-index: 1;">Nos encantaría atesorar tus buenos deseos. Escribe un mensaje para recordar este día por siempre.</p>
+                            
                             <div class="form-group">
-                                <label>Escribe un mensaje para los novios:</label>
-                                <textarea id="wishesText" rows="4" required placeholder="¡Muchas felicidades Dulce y Christian!"></textarea>
+                                <textarea id="wishesText" rows="4" required placeholder="Con cariño para Dulce y Christian..."></textarea>
                             </div>
-                            <button type="button" onclick="sendWishes()" class="btn" style="width: 100%; font-size: 1rem; padding: 15px;">
+                            <button type="button" onclick="sendWishes()" class="btn" style="width: 100%; font-size: 1rem; padding: 15px; position: relative; z-index: 1;">
                                 <i class="fa-solid fa-paper-plane"></i> ENVIAR MENSAJE
                             </button>
                         </form>
@@ -650,7 +690,7 @@
                 document.getElementById('genericRSVPInputs').style.display = 'none';
             }
 
-            // Countdown hasta 6 Nov 2026 19:00 hrs
+            // Countdown hasta 6 Nov 2026 19:00 hrs (CON SEGUNDOS)
             const countDownDate = new Date("Nov 6, 2026 19:00:00").getTime();
             const x = setInterval(function() {
                 const now = new Date().getTime();
@@ -665,10 +705,12 @@
                 const d = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((distance % (1000 * 60)) / 1000);
 
                 document.getElementById("dias").innerHTML = d < 10 ? "0" + d : d;
                 document.getElementById("horas").innerHTML = h < 10 ? "0" + h : h;
                 document.getElementById("minutos").innerHTML = m < 10 ? "0" + m : m;
+                document.getElementById("segundos").innerHTML = s < 10 ? "0" + s : s;
             }, 1000);
         });
 
@@ -723,7 +765,7 @@
                 alert("Por favor, escribe un mensaje primero."); 
                 return; 
             }
-            let mensaje = `¡Hola Dulce y Christian! Les dejo mis mejores deseos para su boda:\n\n"${wishes}"`;
+            let mensaje = `¡Hola Dulce y Christian! Les dejo estas palabras con mucho cariño:\n\n"${wishes}"`;
             window.open(`https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
