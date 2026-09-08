@@ -330,6 +330,32 @@
         }
         .footer-editorial p { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 5px; color: var(--main-dark); text-transform: uppercase; margin: 0; font-weight: 500;}
 
+        /* ==========================================================================
+           EFECTO DE BRILLO EN TEXTOS PRINCIPALES (SHINE)
+           ========================================================================== */
+        h2:not(.dress-code-main), 
+        .names-container span.name,
+        .save-date-date {
+            background: linear-gradient(110deg, var(--main-dark) 35%, var(--gold) 50%, var(--main-dark) 65%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineSweep 5s linear infinite;
+        }
+
+        .dress-code-main {
+            background: linear-gradient(110deg, var(--white) 35%, var(--gold-light) 50%, var(--white) 65%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineSweep 5s linear infinite;
+        }
+
+        @keyframes shineSweep {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
         @media (max-width: 992px) {
             .invitation-container { grid-template-columns: 1fr; }
             .column:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
