@@ -714,13 +714,8 @@
 
                         <!-- LISTA DINÁMICA DE NOMBRES -->
                         <div id="dynamicGuestList" style="width: 100%; text-align: left;"></div>
-
-                        <div class="form-group-ed" style="margin-top: 25px;">
-                            <label>Restricciones Alimenticias:</label>
-                            <input type="text" id="rsvpAlergias" placeholder="Opcional (Alergias, menú vegano)">
-                        </div>
                         
-                        <button type="button" onclick="sendRSVP()" class="btn-whatsapp">
+                        <button type="button" onclick="sendRSVP()" class="btn-whatsapp" style="margin-top: 25px;">
                             <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> CONFIRMAR VÍA WHATSAPP
                         </button>
 
@@ -1014,7 +1009,6 @@
 
         // --- 4. ENVIAR RSVP ---
         function sendRSVP() {
-            const alergias = document.getElementById('rsvpAlergias').value.trim();
             const dynamicList = document.getElementById('dynamicGuestList');
             const hasDynamicNames = dynamicList.children.length > 0;
             
@@ -1058,8 +1052,6 @@
                 }
                 mensaje = `Hola, soy *${nombre}*.\n\nQuiero confirmar mi respuesta a la boda de Dulce y Christian: *${asistencia}*\n\n`;
             }
-
-            if(alergias) mensaje += `⚠️ *Nota adicional (Alergias/Restricciones):*\n${alergias}`;
 
             window.open(`https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
